@@ -1,0 +1,94 @@
+import java.util.*;
+
+abstract class A{
+    public abstract void f1();
+    
+}
+
+class B extends A {
+    public void f1(){
+        System.out.println("-------Press 0 to end-------\n1.Add an element at last\n2.Removing an element\n3.To modify an element in the array\n4.Sorting array\n5.Reverse sorting\n6.To see final array\n7.Clear the total array\n");
+    }
+}
+
+public class Main{
+    public static void main(String args[]){
+        try{
+            B ob1 = new B();
+            Scanner i = new Scanner(System.in);
+            ArrayList<Integer> arr = new ArrayList<Integer>();  
+            
+            while(true){
+                ob1.f1();
+                System.out.print("Please select one : ");
+                int inp = i.nextInt();
+                if(inp==0){
+                    break;
+                }else{
+                    if(inp==1){
+                        System.out.print("Enter how many elements do you want add : ");
+                        int a = i.nextInt();
+                        for(int j=1;j<a+1;j++){
+                            System.out.print("Enter element to add : ");
+                            int b = i.nextInt();
+                            arr.add(b);
+                        }
+                        System.out.println("Entered elements are added into array!\n");
+                        
+                    }else if(inp==2){
+                        System.out.println(arr);
+                        System.out.print("How many elements elements do you want to remove : ");
+                        int a = i.nextInt();
+                        for(int j=1;j<a+1;j++){
+                            System.out.print("Enter element index value to remove : ");
+                            int b = i.nextInt();
+                            arr.remove(b);
+                        }
+                        System.out.println("Entered elements are removed from the array!\n");
+                    }else if(inp==3){
+                        System.out.println(arr);
+                        System.out.print("Enter how many elements do you want modify : ");
+                        int a = i.nextInt();
+                        for(int j=1;j<a+1;j++){
+                            System.out.print("Enter element index : ");
+                            int b = i.nextInt();
+                            System.out.print("Enter element to modify : ");
+                            int c = i.nextInt();
+                            arr.set(b,c);
+                        }
+                        System.out.println("Entered elements are modified!\n");
+                    }else if(inp==4){
+                        Collections.sort(arr);
+                        System.out.println("The array is sorted!\n");
+                    }else if(inp==5){
+                        Collections.sort(arr,Collections.reverseOrder());
+                        System.out.println("The array is reverse sorted!\n");
+                    }else if(inp==6){
+                        System.out.print("1.Array format\n2.one by one\nPlease select the format : ");
+                        int a = i.nextInt();
+                        if(a==1){
+                            System.out.println(arr);
+                        }else if(a==2){
+                            for(int k : arr){
+                                System.out.println(k);
+                            }
+                        }else{
+                            System.out.println("The default array is displayed !");
+                            System.out.println(arr);
+                        }
+                    }else if(inp==7){
+                        arr.clear();
+                        System.out.println("The array is cleared !");
+                    }
+                    else{
+                        System.out.println("Please select the above operations only!");
+                    }
+                }
+            }
+            
+        }catch(Exception e){
+            System.out.println("Something went wrong!");
+        }
+        
+    }
+}
